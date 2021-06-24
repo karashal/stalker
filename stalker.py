@@ -1,31 +1,29 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-# Скрипт для удаление сохранений на кириллице в игре S.T.A.L.K.E.R.
-# Все информации об обновлении/ошибки, и инструкция в файле readme.txt.
+# The script for deleting Cyrillic saves in the game S.T.A.L.K.E.R.
 
+# Import os to work with files.
 import os
 
+# Cyrillic alphabet.
 LETTERS = ('а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й',
 		 		'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 
 		 		'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я')
 
-# Путь к сохранениям.
-SAVES = r'D:\Games\games_ready\S.T.A.L.K.E.R. - Объединенный Пак 2\appdata\savedgames'
+# Path to save game. Something like that...
+SAVES = r'D:\Games\S.T.A.L.K.E.R. - Объединенный Пак 2\appdata\savedgames'
 
-# Открываем файлы.
+# Open the file.
 for top, dirs, files in os.walk(SAVES):
-	print(f'Общее количество файлов - {len(files)}.')
+	print(f'Total number of files - {len(files)}.')
 	for file in files:
 		
-		# Проверяем файлы на кириллицу.
+		# Checking files for Cyrillic.
 		for letter in LETTERS:
 			if letter in file:
 
-				# Если файл на кириллице, тогда удаляем.
-				print(f'{file} - удалена.')
+				# If the file is in Cyrillic, then delete it.
+				print(f'{file} - deleted.')
 				os.remove(os.path.join(SAVES, file))
 				break
-
-# Некорректно работает.
-# print(f'Количество файлов после удаление - {len(files)}.')
